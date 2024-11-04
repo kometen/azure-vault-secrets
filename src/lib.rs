@@ -92,7 +92,10 @@ async fn get_secret(client: &SecretClient, key: String) -> Result<String> {
 
 #[cfg(test)]
 mod tests {
-    use db_config::DatabaseConfig;
+    use crate::VaultStorage;
+    use db_config::db_config_from_vault;
+
+    db_config_from_vault!([host, user, name, pwd, domain]);
 
     #[test]
     fn test_keys_returns_correct_number_of_fields() {
